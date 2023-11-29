@@ -13,10 +13,10 @@ void printMatrix(int **a, int nl, int nc)
 {
     if (D) printf("printMatrix [%p] %dx%d\n", (void*)a, nl,nc);
 	int i,j;
-	for (i=0; i<nl; i++)
+	for (i = 0; i < nl; i++)
 	{
 		for (j = 0; j < nc; j++){
-			printf("%d ",a[i][j]);
+			printf("%d ", a[i][j]);
 		}
 		printf("\n");
 	}
@@ -25,18 +25,16 @@ void printMatrix(int **a, int nl, int nc)
 int sumMatrix(int **a, int nl, int nc)
 {
     if (D) printf("sumMatrix %dx%d = ",nl,nc);
-	int i,j;
+	int i, j;
 	int s = 0;
-	for (i=0; i<nl; i++)
+	for (i = 0; i < nl; i++)
 	{
-		for (j=0; j<nc; j++){
+		for (j = 0; j < nc; j++){
 			s = s + a[i][j];
 		}
 	}
-	//modulo_positive(s);
-	s = s % MODULO;
-	if(s < 0)
-		s = s + MODULO;
+	// 
+	s = modulo_positive(s);
 	return s;
 }
 
@@ -102,7 +100,7 @@ int** readMatrixforKeyboard(int nl, int nc)
 {
 	if (DD) printf("readMatrixforKeyboard %dx%d\n",nl,nc);
 	int **a;
-	int i,j;
+	int i, j;
 
 	a = malloc(nl * sizeof(int*));
 
@@ -111,7 +109,7 @@ int** readMatrixforKeyboard(int nl, int nc)
 		a[i] = malloc(nc * sizeof(int));
 		for (j = 0; j < nc; j++){
 			//TODO verificare interval [-10^4,10^4]
-			scanf("%d",&a[i][j]);
+			scanf("%d", &a[i][j]);
 		}
 	}
 	return a;
@@ -131,7 +129,8 @@ int** initAllocMatrix(int nl, int nc, int v)
 	{
 		for (j = 0; j < nc; j++){
 			a[i][j] = v;
-			if (v<0) a[i][j] = -v;
+			if (v < 0)
+				a[i][j] = -v;
 		}
 	}
 	return a;

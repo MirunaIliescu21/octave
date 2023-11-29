@@ -29,15 +29,15 @@ int multiplicateVectors(int* v, int* w, int n)
 {
     int s = 0;
     for(int i = 0; i < n; i++) {
-        s = s + v[i] * w[i];
+        s = s + modulo_positive(v[i] * w[i]);
     }
-	//modulo_positive(s);
-	s = s % MODULO;
-	if(s < 0)
-		s = s + MODULO;
-
+	s = modulo_positive(s);
+    // s = s % MODULO;
+	// if(s < 0)
+	// 	s = s + MODULO;
     return s;
 }
+
 //multiplicateMatrix(matrix1, nr rows, nr col, matrix2, nr rows, nr col)
 int multiplicateMatrix(int** m, int x1, int y1, int** n, int x2, int y2, int** a)
 {

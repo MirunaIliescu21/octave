@@ -14,7 +14,6 @@ valgrind --leak-check=yes -s ./matlab
 #include "Matrix.h"
 #include "Collection.h"
 #include "Radix.h"
-#include "Exponent.h"
 #include "PowerMatrix.h"
 #include "strassenMultiply.h"
 #include "MultiplicateMatrix.h"
@@ -102,7 +101,6 @@ int main(void)
 			ok = 1;
 			if (D) printf("Redimensionarea unei matrice\n");
 			scanf("%d", &k);
-			if (validate_index(k, qz)) {
 				int lx, cx;
 				scanf("%d", &lx); // nr de linii
 				int li[lx];
@@ -110,6 +108,8 @@ int main(void)
 				scanf("%d", &cx); // nr de coloane
 				int ci[cx];
 				for(int i = 0; i < cx; i++) { scanf("%d", &ci[i]);	}
+
+			if (validate_index(k, qz)) {
 				q[k] = cutMatrix(q[k], &ql[k], &qc[k], lx, li, cx, ci);
  			}
 		}
@@ -143,11 +143,14 @@ int main(void)
 		if (key == 'O') {
 			ok = 1;
 			if (D) printf("Sortarea matricelor\n");
-			sum = realloc(sum, qz * sizeof(int));
-			top = realloc(top, qz * sizeof(int));
-			for (int i = 0; i < qz; i++) { sum[i] = sumMatrix(q[i], ql[i], qc[i]); }
-			sortVector(sum, qz, top);
-			q = sortCube(q, qk, qz, ql, qc, top);
+			if(qz > 0) {
+				sum = realloc(sum, qz * sizeof(int));
+				top = realloc(top, qz * sizeof(int));
+				for (int i = 0; i < qz; i++) { sum[i] = sumMatrix(q[i], ql[i], qc[i]); }
+				sortVector(sum, qz, top);
+				q = sortCube(q, qk, qz, ql, qc, top);
+			}
+
 		}
 		if (key == 'T') {
 			ok = 1;
@@ -162,7 +165,7 @@ int main(void)
 			if (D) printf("Ridicarea unei matrice la o putere în timp logaritmic\n");
 			scanf("%d%d", &k, &p);
 			if (validate_index(k, qz)) {
-				powerMatrix(q[k], ql[k], ql[k], p);
+				powerMatrix(q[k], ql[k], qc[k], p);
 			}
 			// (!) nu face modulo
 		}

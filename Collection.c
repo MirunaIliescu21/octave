@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Matrix.h"
-#include "Exponent.h"
 
 # define D 0  //debug messages
 # define DD 0 //detail debug messages

@@ -3,7 +3,7 @@
 #define MODULO 10007
 
 int validate_index(int k, int size) {
-	if (k >= size) { 
+	if (k >= size || k < 0) { 
 		printf("No matrix with the given index\n");
 		return 0;  
 	}
@@ -24,16 +24,9 @@ int validate_size(int k1, int k2, int *ql, int *qc)
 	return 1;
 }
 
-int modulo_positive(int x) {
-    int r = x ;
-
-	if (r > MODULO) {	
-		r = r % MODULO;
-	}
-
-	if (r < -MODULO) {
-		r = r % MODULO;
-    	if (r < 0) r = r + MODULO;
-	}
-	return r;
+int modulo_positive(int s) {
+	s = s % MODULO;
+	if(s < 0)
+		s = s + MODULO;
+	return s;
 }

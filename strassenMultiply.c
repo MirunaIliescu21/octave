@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Validate.h"
 
 #define D 0
 
@@ -8,6 +9,7 @@ void addMatrices(int **A, int **B, int **C, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             C[i][j] = A[i][j] + B[i][j];
+            C[i][j] = modulo_positive(C[i][j]);
         }
     }
 }
@@ -17,6 +19,7 @@ void subtractMatrices(int **A, int **B, int **C, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             C[i][j] = A[i][j] - B[i][j];
+            C[i][j] = modulo_positive(C[i][j]);
         }
     }
 }
@@ -26,6 +29,7 @@ void strassenMultiply(int **A, int **B, int **C, int size) {
     if (size == 1) {
         // Cazul de baza: inmultirea a doua matrice 1x1
         C[0][0] = A[0][0] * B[0][0];
+        C[0][0] = modulo_positive(C[0][0]);
         return;
     }
 

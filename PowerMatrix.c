@@ -4,7 +4,8 @@
 #include "Validate.h"
 
 #define D 0
-#define MAXPOW 1000000000;
+#define MAXPOW 1000000001
+               
 #define MODULO 10007
 
 
@@ -15,12 +16,9 @@ void multiplyMatrices(int **A, int **B, int **result, int size) {
         for (j = 0; j < size; j++) {
             result[i][j] = 0;
             for (k = 0; k < size; k++) {
-                result[i][j] += A[i][k] * B[k][j];
+                result[i][j] += modulo_positive(A[i][k] * B[k][j]);
             }
-			//modulo_positive(result[i][j]);
-			result[i][j] = result[i][j] % MODULO;
-			if(result[i][j] < 0)
-				result[i][j] = result[i][j] + MODULO;
+			result[i][j] = modulo_positive(result[i][j]);
         }
     }
 }
@@ -41,14 +39,16 @@ int powerMatrix(int **matrix, int l, int c, int exponent) {
 	if (exponent < 0) { 
         printf("Power should be positive\n");
         return 1;
-		}
-    if (l !=c ) {
+	}
+    if (l != c) {
         printf("Cannot perform matrix multiplication\n");
         return 1;
     }
 
     // Matricea rezultat este initializata cu matricea identitate
     int size = l;
+	if(exponent > MAXPOW) 
+		return 2;
     exponent = exponent % MAXPOW;
     int **temp = (int **)malloc(size * sizeof(int *));
 	int **result = (int **)malloc(size * sizeof(int *));

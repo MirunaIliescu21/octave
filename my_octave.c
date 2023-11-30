@@ -1,3 +1,4 @@
+// Copyright Miruna-elena Iliescu 312CAb 2023-2024
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -70,7 +71,7 @@ int main(void)
 			if (validate_index(k1, qz) && validate_index(k2, qz)) {
 				a = mat_multiply(q[k1], ql[k1], qc[k1], q[k2], ql[k2], qc[k2]);
 				l = ql[k1]; c = qc[k2];
-				if (a != NULL) {
+				if (a) {
 					if (qz == qk) {
 						qk = qk * 2;
 						q = (void *)realloc(q, qk * sizeof(int **));
@@ -117,23 +118,20 @@ int main(void)
 					qlo[i] = ql[i];
 					qco[i] = ql[i];
 				}
-				int ***w;
-				int nz = qz - 0;
-				if (nz == 0) {
-					if (D) printf("Empty collection. Really!?\n");
-				} else {
+				int ***w, nz = qz - 0;
+				if (nz != 0) {
 					int ka = 0;
 					w = malloc((qk) * sizeof(int **));
 					for (k = 0; k < qz; k++) {
 						if (k != ki) {
-						ql[ka] = ql[k]; qc[ka] = qc[k];
-						w[ka] = malloc(ql[k] * sizeof(int *));
-						for (int i = 0; i < ql[k]; i++) {
-							w[ka][i] = malloc(qc[k] * sizeof(int));
-							for (int j = 0; j < qc[k]; j++)
-							w[ka][i][j] = q[k][i][j];
-						}
-						ka++;
+							ql[ka] = ql[k]; qc[ka] = qc[k];
+							w[ka] = malloc(ql[k] * sizeof(int *));
+							for (int i = 0; i < ql[k]; i++) {
+								w[ka][i] = malloc(qc[k] * sizeof(int));
+								for (int j = 0; j < qc[k]; j++)
+									w[ka][i][j] = q[k][i][j];
+							}
+							ka++;
 						}
 					}
 					qz = qz - 1;

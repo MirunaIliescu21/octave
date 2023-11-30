@@ -1,11 +1,12 @@
-// printCollection (collection, size, linesvector, columnsvector)
-void printCollection(int ***a, int z, int *l, int *c);
+// print_collection (collection, size, linesvector, columnsvector)
+void print_collection(int ***a, int z, int *l, int *c);
 
-// freeCollection(collection, size, linesvector)
-void freeCollection(int ***a, int z, int *l);
+// free_collection(collection, size, linesvector)
+void free_collection(int ***a, int z, int *l);
 
-void freeCube(int ***q, int nk, int* ql);
+void free_cube(int ***q, int nk, int *ql);
 
-int addMatrixtoCube(int ***q, int* qz, int* ql, int* qc, int **a, int l, int c);
+// add matrix to collection
+int add_matrix(int ***q, int *qz, int *ql, int *qc, int **a, int l, int c);
 
-int*** sortCube(int ***q, int qk, int z, int *ql, int *qc, int *top);
+int ***sort_cube(int ***q, int qk, int z, int *ql, int *qc, int *top);

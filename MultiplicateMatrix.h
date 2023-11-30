@@ -1,13 +1,11 @@
+// get_row(matrix, index, nr columns)
+int *get_row(int **a, int k, int nc);
 
-// getRow(matrix, index, nr columns)
-int* getRow(int**, int, int);
+// get_column(matrix, index, nr lines)
+int *get_column(int **a, int k, int nl);
 
-// getColumn(matrix, index, nr lines)
-int* getColumn(int**, int, int);
+// multiplicate matrix(mat1, nr rows, nr cols, mat2, nr rows, nr cols, result)
+int multiplicate(int **m, int x1, int y1, int **n, int x2, int y2, int **a);
 
-// multiplicateMatrix(matrix1, nr rows, nr cols, matrix2, nr rows, nr cols, matrix-result)
-int multiplicateMatrix(int** , int, int, int**, int, int, int**);
-
-// matrix-result = newMatrixMultiplicate(matrix1, nr rows, nr cols, matrix2, nr rows, nr cols)
-int** newMatrixMultiplicate(int** m, int x1, int y1, int** n, int x2, int y2);
-
+// new_matrix_multiplicate(mat1, nr rows, nr cols, mat2, nr rows, nr cols)
+int **mat_multiply(int **m, int x1, int y1, int **n, int x2, int y2);

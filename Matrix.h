@@ -1,17 +1,17 @@
-int sumMatrix(int **a, int nl, int nc);
-// sum = sumMatrix (matrix, lines, colums);
+int sum_matrix(int **a, int nl, int nc);
+// sum = sum_matrix (matrix, lines, colums);
 
-void printMatrix(int **a, int nl, int nc);
-// printMatrix(matrix, lines, columns)
+void print_matrix(int **a, int nl, int nc);
+// print_matrix(matrix, lines, columns)
 
-int** transposeMatrix(int **b, int *l, int *c);
-// transpose = transposeMatrix(matrix, lines-pointer, columns-pointer)
+int **transpose_matrix(int **b, int *l, int *c);
+// transpose = transpose_matrix(matrix, lines-pointer, columns-pointer)
 
-int** cutMatrix(int **b, int *l, int *c, int nl, int *li, int nc, int *ci);
-// matrix = (matrix, lines-p, columns-p, n-lines-to-cut, lines-to-cut, n-col-to-cut, cols-to-cut)
+int **cut_matrix(int **b, int *l, int *c, int nl, int *li, int nc, int *ci);
+// matrix = (matrix, lines, columns, n-lines-to-cut, lines, n-col-to-cut, cols)
 
-void freeMatrix(int **, int);
-// freeMatrix(matrix, lines)
+void free_matrix(int **a, int nl);
+// free_matrix(matrix, lines)
 
-int** readMatrixforKeyboard(int nl, int nc);
-int** initAllocMatrix(int nl, int nc, int v);
+int **read_matrix(int nl, int nc);
+int **init_alloc_matrix(int nl, int nc, int v);

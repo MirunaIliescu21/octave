@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "Validate.h"
 
-int getMax(int arr[], int n)
+int get_max(int arr[], int n)
 {
 	int mx = arr[0];
 	for (int i = 1; i < n; i++)
@@ -13,12 +13,11 @@ int getMax(int arr[], int n)
 // A function to do counting sort of arr[]
 // according to the digit
 // represented by exp.
-void countSort(int arr[], int n, int exp)
+void count_sort(int arr[], int n, int exp)
 {
-
 	// Output array
 	int output[n];
-	int i, count[10] = { 0 };
+	int i, count[10] = {0};
 
 	// Store count of occurrences
 	// in count[]
@@ -44,42 +43,41 @@ void countSort(int arr[], int n, int exp)
 		arr[i] = output[i];
 }
 
-void radixsort(int arr[], int n)
+void radix_sort(int arr[], int n)
 {
-
 	// Find the maximum number to
 	// know number of digits
-	int m = getMax(arr, n);
+	int m = get_max(arr, n);
 
 	// Do counting sort for every digit.
 	// Note that instead of passing digit
 	// number, exp is passed. exp is 10^i
 	// where i is current digit number
 	for (int exp = 1; m / exp > 0; exp *= 10)
-		countSort(arr, n, exp);
+		count_sort(arr, n, exp);
 }
 
-int findElementinVector(int odx[], int n, int e)
+int find_element_in_vector(int odx[], int n, int e)
 {
 	int i;
 	int f = -1;
-	for (i=0; i < n; i++)
-        if (odx[i] == e) {
+	for (i = 0; i < n; i++)
+		if (odx[i] == e) {
 			f = i;
 			break;
 		}
 	return f;
 }
 
-void sortVector(int *arr, int n, int *top)
+void sort_vector(int *arr, int n, int *top)
 {
-	int *odx = malloc (n * sizeof(int));
+	int *odx = malloc(n * sizeof(int));
 	int i;
-	for (i = 0; i < n; i++) 
-		odx[i] = arr[i];
-	radixsort(arr, n);
 	for (i = 0; i < n; i++)
-	    top[i] = findElementinVector(odx, n, arr[i]);
+		odx[i] = arr[i];
+	radix_sort(arr, n);
+	for (i = 0; i < n; i++)
+		top[i] = find_element_in_vector(odx, n, arr[i]);
 
 	free(odx);
 }

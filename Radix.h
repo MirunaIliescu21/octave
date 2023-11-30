@@ -1,7 +1,6 @@
+void radix_sort(int arr[], int n);
 
-void radixsort(int arr[], int n);
+int find_element_in_vector(int odx[], int n, int e);
 
-int findElementinVector(int odx[], int n, int e);
-
-//index = sortVector(vector, elements)
-void sortVector(int arr[], int n, int *top);
+//index = sort_vector(vector, elements)
+void sort_vector(int arr[], int n, int *top);
